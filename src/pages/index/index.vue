@@ -1,47 +1,43 @@
 <template>
-  <view class="content">
-    <image class="logo" src="../../static/logo.png"></image>
-    <view>
-      <text class="title">{{ title }}</text>
-    </view>
+  <view>
+    <image :src="`${ASSETS_HOST}/return.png`"></image>
+    <image :src="`${ASSETS_HOST}/auto.png`"></image>
+    <image :src="`${ASSETS_HOST}/bussiness-man.png`"></image>
+    <image :src="`${ASSETS_HOST}/clock.png`"></image>
+    <button @click="handleSubmit">提交表单</button>
   </view>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Vue } from 'vue-property-decorator';
+import { throttle } from 'lodash';
 
-export default Vue.extend({
-  data() {
-    return {
-      title: 'Hello',
-    };
-  },
-  onLoad() {},
-  methods: {},
-});
+@Component
+export default class Index extends Vue {
+  readonly ASSETS_HOST = process.env.VUE_APP_ASSETS_HOST;
+  imageSrc = `${process.env.VUE_APP_ASSETS_HOST}/return.png`;
+
+  created() {
+    console.log('created');
+  }
+
+  mounted() {
+    console.log('mounted');
+  }
+
+  onLoad() {
+    console.log('onLoad');
+  }
+
+  onShow() {
+    console.log('onShow');
+    setTimeout(() => {
+      this.imageSrc = `${process.env.VUE_APP_ASSETS_HOST}/clock.png`;
+    }, 2000);
+  }
+
+  handleSubmit = throttle(function () {
+    console.log(this.imageSrc);
+  }, 3000);
+}
 </script>
-
-<style lang="scss">
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin: 200rpx auto 50rpx auto;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
-}
-</style>

@@ -44,7 +44,7 @@
     "usingComponents": true,
     "appid": "wxc66c641827b79fc4",
     "setting": {
-      "urlCheck": true
+      "urlCheck": false
     }
   },
   "mp-alipay": {
@@ -54,7 +54,10 @@
     "usingComponents": true
   },
   "mp-toutiao": {
-    "usingComponents": true
+    "usingComponents": true,
+    "setting": {
+      "urlCheck": false
+    }
   },
   "mp-qq": {
     "usingComponents": true
